@@ -139,9 +139,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706031fe3bfe57c40a80267f8054d8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farXpos: 0
+  firstFingerPosition: {x: 0, y: 0, z: 0}
+  lastFingerPosition: {x: 0, y: 0, z: 0}
   waypointsArray: []
   midPosition: {x: 0, y: 0, z: 0}
+  initialPosition: {x: 0, y: 0.1, z: -1.32}
+  footballPos: {x: 0, y: 0, z: 0}
+  ballDirection: {x: 0, y: 0, z: 0}
+  iPosition: {x: 0, y: 0, z: 0}
+  fPosition: {x: 0, y: 0, z: 0}
+  farXpos: 0
+  power: 0
+  timer: 0
+  saveTime: 0
+  factorX: 0.002
+  positionX: 0
   posX: 0
   posY: 0
   posZ: 0
@@ -149,23 +161,20 @@ MonoBehaviour:
   yf: 0
   zo: 0
   zf: 0
-  retry: 0
-  power: 0
-  timer: 0
-  saveTime: 0
-  canShoot: 1
-  factorX: 0.002
-  centerPosition: 537
-  ballDirection: {x: 0, y: 0, z: 0}
-  maxPositionX: 0
-  minPositionX: 0
   distanceToObject: 10000
-  rb: {fileID: 306270352}
   speed: 1
+  startTime: 0
+  journeyLength: 0
+  maxSwipeTime: 30
   swipeTime: 0
-  pointsList: []
   canSwipe: 0
-  MaxSwipeTime: 5000000
+  retryActive: 0
+  AddPointsToList: 0
+  ballThrowRight: 0
+  ballThrowLeft: 0
+  returned: 1
+  makeReal: 0
+  rb: {fileID: 306270352}
 --- !u!4 &243493461
 Transform:
   m_ObjectHideFlags: 0
@@ -271,14 +280,14 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 306270347}
   serializedVersion: 2
-  m_Mass: 0.0000001
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &325037664
 GameObject:
   m_ObjectHideFlags: 0

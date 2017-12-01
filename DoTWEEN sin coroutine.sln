@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoTWEEN sin coroutine", "DoTWEEN sin coroutine.csproj", "{DBAC8BC7-4440-5AA1-0888-2AA9E1A63949}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBAC8BC7-4440-5AA1-0888-2AA9E1A63949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBAC8BC7-4440-5AA1-0888-2AA9E1A63949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBAC8BC7-4440-5AA1-0888-2AA9E1A63949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBAC8BC7-4440-5AA1-0888-2AA9E1A63949}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
