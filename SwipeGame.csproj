@@ -233,6 +233,8 @@
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
+    <Compile Include="Assets\FullTiltBoogie\RotateFlareHolder.cs" />
+    <Compile Include="Assets\Scripts\CollisionBall.cs" />
     <Compile Include="Assets\Scripts\SwipeBall.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +244,7 @@
     <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\FullTiltBoogie\Helpers\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

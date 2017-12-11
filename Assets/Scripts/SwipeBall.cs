@@ -18,8 +18,8 @@ public class SwipeBall : MonoBehaviour
     public Vector3 fPosition;
 
     [Header("Floats")]
-    public float farXpos;
-    public float power;
+    public float timeForDoSwipe;
+    public float maxTimeForDoSwipe = 60.0f;
     public float timer = 0;
     public float saveTime;
     public float factorX = 0.002f;
@@ -37,29 +37,33 @@ public class SwipeBall : MonoBehaviour
     public float journeyLength;
     public float maxSwipeTime;
     public float swipeTime = 0;
-
+    public float distance = 200.0f;
     [Header("Booleans")]
     public bool canSwipe;
     public bool retryActive;
     public bool AddPointsToList = false;
     public bool ballThrowRight = false;
     public bool ballThrowLeft = false;
-    public bool returned = true;
+    public bool playGame = true;
     public bool makeReal = false;
     public Rigidbody rb;
+    public GameObject particles;
     RaycastHit detection = new RaycastHit();
+    public Collider ball;
 
+    //Start
     void Start()
     {
         startTime = Time.time;
         journeyLength = Vector3.Distance(rb.position, detection.point);
-        canSwipe = true;
+        canSwipe = false;
     }
 
+    //Update
     void Update()
     {
         if (Input.GetButton("Fire1")) Retry();
-        if (returned) playerLogic();
+        if (playGame) playerLogic();
         if (AddPointsToList) CheckXPoint();
         MakeBallReal();
 
@@ -70,7 +74,7 @@ public class SwipeBall : MonoBehaviour
             makeReal = false;
         }
     }
-
+    //Functions
     void playerLogic()
     {
         DoMouseTouch();
@@ -89,6 +93,25 @@ public class SwipeBall : MonoBehaviour
         return Vector3.zero;
     }
 
+    public void TouchBall()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (ball.Raycast(ray, out hit, 100.0F))
+        {
+            transform.position = ray.GetPoint(100.0F);
+          //  Debug.Log("Ball Touching");
+            timeForDoSwipe++;
+            canSwipe = true;
+            if (timeForDoSwipe > maxTimeForDoSwipe)
+            {
+                canSwipe = false;
+                timeForDoSwipe = 0;
+            }
+            else timeForDoSwipe = 0;
+        }
+        
+    }
     private void ThrowingBall(Vector3 EndPoint)
     {
         iPosition = rb.position;
@@ -118,21 +141,25 @@ public class SwipeBall : MonoBehaviour
 
     private void DoMouseTouch()
     {
-       if (canSwipe)
+        TouchBall();
+        if (canSwipe)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 CalculateInitial();
             }
+
             if (Input.GetMouseButton(0))
             {
                 CalculateWhenSwipes();
             }
+
             if (Input.GetMouseButtonUp(0))
             {
                 Kick(Input.mousePosition);
                 canSwipe = false;
             }
+
             //if (touch.phase == TouchPhase.Ended)
         }
     }
@@ -185,12 +212,16 @@ public class SwipeBall : MonoBehaviour
     void CheckXPoint()
     {
         var difToCenter = Input.mousePosition.x - Screen.width / 2;
-        if(Mathf.Abs(difToCenter) > Mathf.Abs(positionX)) positionX = difToCenter;
+        if (Mathf.Abs(difToCenter) > Mathf.Abs(positionX))
+        {
+            positionX = difToCenter;
+            saveTime = timer;
+        }
     }
 
     public void Retry()
     {
-        canSwipe = true;
+        particles.SetActive(false);
         rb.isKinematic = true;
         rb.useGravity = false;
         retryActive = true;
