@@ -11,6 +11,7 @@ public class SwipeBall : MonoBehaviour
     public Vector3 lastFingerPosition; 
     public Vector3[] waypointsArray = new Vector3[3];
     public Vector3 midPosition;
+    public Vector3 midPosition2;
     public Vector3 initialPosition = new Vector3(0, 0.1f, -1.32f);
     public Vector3 footballPos;
     public Vector3 ballDirection;
@@ -21,6 +22,8 @@ public class SwipeBall : MonoBehaviour
     public float timeForDoSwipe;
     public float maxTimeForDoSwipe = 60.0f;
     public float timer = 0;
+    public float positionY;
+    public float saveTime2;
     public float saveTime;
     public float factorX = 0.002f;
     public float positionX = 0.0f;
@@ -31,6 +34,8 @@ public class SwipeBall : MonoBehaviour
     public float yf;
     public float zo;
     public float zf;
+    public float xo;
+    public float xf;
     public float distanceToObject = 10000.0f;
     public float speed = 1.0F;
     public float startTime;
@@ -121,6 +126,9 @@ public class SwipeBall : MonoBehaviour
         zo = initialPosition.z;
         zf = EndPoint.z;
 
+        xo = rb.position.x;
+        xf = EndPoint.x;
+
         CalculateWaypoints();
         DoTween();
     }
@@ -181,19 +189,55 @@ public class SwipeBall : MonoBehaviour
         lastFingerPosition = Input.mousePosition;
         AddPointsToList = true;
         positionX = 0;
+        positionY = 0;
+
     }
 
     public void CalculateWaypoints()
     {
-        posX = positionX;
-        posY = (saveTime / timer) * (yf - yo) + yo;
-        posZ = (saveTime / timer) * (zf - zo) + zo;
+        if (saveTime < saveTime2)
+        {
+            posX = positionX;
+            posY = (saveTime / timer) * (yf - yo) + yo;
+            posZ = (saveTime / timer) * (zf - zo) + zo;
 
-        midPosition = new Vector3((posX) * factorX, posY, posZ);
-        waypointsArray = new Vector3[3];
+            midPosition = new Vector3((posX) * factorX, posY, posZ);
+
+            posX = ((saveTime2 - saveTime) / (timer - saveTime)) * (xf - midPosition.x) + midPosition.x;
+          //  posX = (saveTime2 / timer) * (xf - xo) + xo;
+            posY = positionY * 0.5f;
+            posZ = (saveTime / timer) * (zf - zo) + zo;
+
+            midPosition2 = new Vector3(posX, (factorX) * posY, posZ);
+        }
+
+        else
+        {
+
+            posX = (saveTime2 / timer) * (xf - xo) + xo; 
+            posY = positionY * 0.5f;
+            posZ = (saveTime / timer) * (zf - zo) + zo;
+
+            midPosition = new Vector3(posX, (factorX) * posY, posZ);
+
+            posX = positionX;
+
+             posY = ((saveTime - saveTime2) / (timer - saveTime2)) * (yf - midPosition.y) + midPosition.y;
+          //  posY = (saveTime / timer) * (yf - yo) + yo;
+            posZ = (saveTime / timer) * (zf - zo) + zo;
+
+            midPosition2 = new Vector3((posX) * factorX, posY, posZ);
+
+
+        }
+       
+        
+
+        waypointsArray = new Vector3[4];
         waypointsArray[0] = iPosition;
         waypointsArray[1] = midPosition;
-        waypointsArray[2] = fPosition;
+        waypointsArray[2] = midPosition2;
+        waypointsArray[3] = fPosition;
     }
 
     private void Kick(Vector3 lastPosition)
@@ -201,7 +245,7 @@ public class SwipeBall : MonoBehaviour
         swipeTime = 0;
         lastFingerPosition = lastPosition;
 
-        ballThrowRight = (positionX > Screen.width / 2) ? true : false;
+       // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
 
         AddPointsToList = false;
 
@@ -217,6 +261,14 @@ public class SwipeBall : MonoBehaviour
             positionX = difToCenter;
             saveTime = timer;
         }
+       
+        if (Mathf.Abs(Input.mousePosition.y) > Mathf.Abs(positionY))
+        {
+           
+            positionY = Input.mousePosition.y;
+            saveTime2 = timer;
+           
+        }
     }
 
     public void Retry()
@@ -226,6 +278,7 @@ public class SwipeBall : MonoBehaviour
         rb.useGravity = false;
         retryActive = true;
         saveTime = 0;
+        saveTime2 = 0;
         timer = 0;
         retryActive = false;
         rb.transform.position = initialPosition;
