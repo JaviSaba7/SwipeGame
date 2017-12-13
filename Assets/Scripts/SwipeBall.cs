@@ -27,6 +27,8 @@ public class SwipeBall : MonoBehaviour
     public float saveTime;
     public float factorX = 0.002f;
     public float positionX = 0.0f;
+    Vector2 PosMaxX;
+    Vector2 PosMaxY;
     public float posX;
     public float posY; 
     public float posZ; 
@@ -193,7 +195,7 @@ public class SwipeBall : MonoBehaviour
 
     }
 
-    public void CalculateWaypoints()
+    /*public void CalculateWaypoints()
     {
         if (saveTime < saveTime2)
         {
@@ -230,14 +232,36 @@ public class SwipeBall : MonoBehaviour
 
 
         }
-       
-        
-
         waypointsArray = new Vector3[4];
         waypointsArray[0] = iPosition;
         waypointsArray[1] = midPosition;
         waypointsArray[2] = midPosition2;
         waypointsArray[3] = fPosition;
+    }*/
+
+    public void CalculateWaypoints()
+    {
+        posX = (PosMaxX.x + PosMaxY.x)/ 2 * 1.3f;
+        posY = ((PosMaxX.y + PosMaxY.y)/2) * 0.5f;
+
+        saveTime = ((saveTime2 - saveTime) /2) + saveTime;
+        posZ = (saveTime / timer) * (zf - zo) + zo;
+
+        //midPosition = new Vector3((posX) * factorX, posY, posZ);
+
+        //posX = ((saveTime2 - saveTime) / (timer - saveTime)) * (xf - midPosition.x) + midPosition.x;
+
+        //posX = (saveTime2 / timer) * (xf - xo) + xo;
+
+       //posY = positionY * 0.5f;
+        posZ = (saveTime / timer) * (zf - zo) + zo;
+        
+        midPosition = new Vector3(posX* factorX, (factorX) * posY, posZ);
+        
+        waypointsArray = new Vector3[3];
+        waypointsArray[0] = iPosition;
+        waypointsArray[1] = midPosition;
+        waypointsArray[2] = fPosition;
     }
 
     private void Kick(Vector3 lastPosition)
@@ -256,16 +280,18 @@ public class SwipeBall : MonoBehaviour
     void CheckXPoint()
     {
         var difToCenter = Input.mousePosition.x - Screen.width / 2;
-        if (Mathf.Abs(difToCenter) > Mathf.Abs(positionX))
+        if (Mathf.Abs(difToCenter) > Mathf.Abs(PosMaxX.x))
         {
-            positionX = difToCenter;
+            PosMaxX.x = difToCenter;
+            PosMaxX.y = Input.mousePosition.y;
             saveTime = timer;
         }
        
-        if (Mathf.Abs(Input.mousePosition.y) > Mathf.Abs(positionY))
+        if (Mathf.Abs(Input.mousePosition.y) > Mathf.Abs(PosMaxY.y))
         {
            
-            positionY = Input.mousePosition.y;
+            PosMaxY.y = Input.mousePosition.y;
+            PosMaxY.x = difToCenter;
             saveTime2 = timer;
            
         }
@@ -285,7 +311,10 @@ public class SwipeBall : MonoBehaviour
         positionX = 0.0f;
         firstFingerPosition = new Vector3(0, 0, 0);
         lastFingerPosition = new Vector3(0, 0, 0);
-
+        PosMaxY.x = 0;
+        PosMaxX.y = 0;
+        PosMaxY.y = 0;
+        PosMaxX.x = 0;
         Debug.Log("You are pressing R key!");
     }
 
