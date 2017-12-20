@@ -16,9 +16,11 @@ public class EnemyBehaviour : MonoBehaviour
     bool dispaross = false;
     private float nextFire = 0.0F;
     public float fireRate = 0.5F;
-
+    public GameObject enemy;
     private Transform myTransform;
+    public GameObject player;
 
+    public GameObject bala;
     void Awake()
     {
         myTransform = transform;
@@ -34,23 +36,16 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         Debug.DrawLine(target.position, myTransform.position, Color.yellow);
+        Ray shot = new Ray(myTransform.position, target.position);
 
-        //watching player when arrives at the correct position
-        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target.position - myTransform.position), rotationSpeed * Time.deltaTime);
 
-        if ((Vector3.Distance(transform.position, target.position) < maxRange) && (Vector3.Distance(transform.position, target.position) > minRange) && Time.time > nextFire)
-        {
-            transform.LookAt(target);
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-
-        }
     }
-
-    void Fire()
+    public void Shooting()
     {
-        nextFire = Time.time + fireRate;
-        var bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        Destroy(bullet, 2f);
+       // bala.active = true;
+        bala.transform.LookAt(target.position);
+        bala.transform.position = Vector3.MoveTowards(bala.transform.position, target.position, 0.08f);
+        
+        
     }
-
 }

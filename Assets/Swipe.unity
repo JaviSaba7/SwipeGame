@@ -368,6 +368,7 @@ MonoBehaviour:
   ballDirection: {x: 0, y: 0, z: 0}
   iPosition: {x: 0, y: 0, z: 0}
   fPosition: {x: 0, y: 0, z: 0}
+  enemyShoot: {fileID: 410533684}
   timeForDoSwipe: 0
   maxTimeForDoSwipe: 60
   timer: 0
@@ -408,6 +409,7 @@ MonoBehaviour:
   enemy3: {fileID: 621900825}
   timeGame: 0
   counterText: {fileID: 1939820594}
+  enemyShooting: 0
 --- !u!4 &243493461
 Transform:
   m_ObjectHideFlags: 0
@@ -474,6 +476,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   bulletSpawn: {fileID: 0}
   fireRate: 0.5
+  enemy: {fileID: 0}
+  player: {fileID: 0}
+  bala: {fileID: 0}
 --- !u!4 &246627856
 Transform:
   m_ObjectHideFlags: 0
@@ -615,7 +620,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b958938254e0eb24b9e6c6be9b0a4453, type: 2}
+  - {fileID: 2100000, guid: 94ec15876ccf14d4bb2f3690fd33a8fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -908,6 +913,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1231515140}
   bulletSpawn: {fileID: 1231515145}
   fireRate: 0.5
+  enemy: {fileID: 1537023239}
+  player: {fileID: 1103312892}
+  bala: {fileID: 1231515140}
 --- !u!1 &466744187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1393,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 770406931}
   bulletSpawn: {fileID: 770406932}
   fireRate: 0.5
+  enemy: {fileID: 0}
+  player: {fileID: 0}
+  bala: {fileID: 0}
 --- !u!114 &875387146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,7 +1659,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b958938254e0eb24b9e6c6be9b0a4453, type: 2}
+  - {fileID: 2100000, guid: 7e09c44a3881c2a48becc877c462b99c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1694,8 +1705,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1103312892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: -1.32}
-  m_LocalScale: {x: 0.21603543, y: 0.21603544, z: 0.21603544}
+  m_LocalPosition: {x: 0.36, y: 0.38, z: -1.66}
+  m_LocalScale: {x: 0.21603543, y: 0.8828323, z: 0.21603544}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -2018,6 +2029,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 466744187}
   bulletSpawn: {fileID: 466744188}
   fireRate: 0.5
+  enemy: {fileID: 0}
+  player: {fileID: 0}
+  bala: {fileID: 0}
 --- !u!114 &1896773325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2218,7 +2232,7 @@ MeshCollider:
   m_GameObject: {fileID: 2095052233}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
   m_InflateMesh: 0

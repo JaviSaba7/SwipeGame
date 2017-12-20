@@ -19,6 +19,7 @@ public class SwipeBall : MonoBehaviour
     public Vector3 iPosition;
     public Vector3 fPosition;
 
+    public EnemyBehaviour enemyShoot;
     [Header("Floats")]
     public float timeForDoSwipe;
     public float maxTimeForDoSwipe = 60.0f;
@@ -64,6 +65,8 @@ public class SwipeBall : MonoBehaviour
     public GameObject enemy3;
     public float timeGame = 60.0f;
     public Text counterText;
+
+    public bool enemyShooting = false;
     //Start
     void Start()
     {
@@ -116,6 +119,12 @@ public class SwipeBall : MonoBehaviour
             activeTime = false;
 
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            enemyShooting = true;
+
+        }
+        if(enemyShooting) enemyShoot.Shooting(); 
 
     }
             //Functions
