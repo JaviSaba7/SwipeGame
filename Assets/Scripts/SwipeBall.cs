@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class SwipeBall : MonoBehaviour
 {
@@ -57,13 +58,19 @@ public class SwipeBall : MonoBehaviour
     public GameObject particles;
     RaycastHit detection = new RaycastHit();
     public Collider ball;
-
+    public GameObject enemy;
+    public bool activeTime;
+    public GameObject enemy2;
+    public GameObject enemy3;
+    public float timeGame = 60.0f;
+    public Text counterText;
     //Start
     void Start()
     {
         startTime = Time.time;
         journeyLength = Vector3.Distance(rb.position, detection.point);
         canSwipe = false;
+        timeGame = 60.0f;
     }
 
     //Update
@@ -80,8 +87,38 @@ public class SwipeBall : MonoBehaviour
             rb.useGravity = true;
             makeReal = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            enemy.GetComponent<Animator>().enabled = true;
+            enemy2.GetComponent<Animator>().enabled = true;
+            enemy3.GetComponent<Animator>().enabled = true;
+           activeTime = true;
+
+        }
+
+        if(activeTime) timeGame -= 0.1f;
+        //Debug.Log("TIME GAME = " + timeGame);
+        counterText.text = timeGame.ToString("00.00") + "s";
+
+        if (timeGame == 0) Debug.Log("YOU WIN!");
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            timeGame = 0;
+            if (timeGame == 0) Debug.Log("YOU WIN!");
+            activeTime = false;
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("YOU LOSE!");
+            activeTime = false;
+
+        }
+
     }
-    //Functions
+            //Functions
     void playerLogic()
     {
         DoMouseTouch();

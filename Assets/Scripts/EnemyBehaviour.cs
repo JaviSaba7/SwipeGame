@@ -42,10 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             transform.LookAt(target);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            /*if (Input.GetKey(KeyCode "B"))
-            {
-                Fire();
-            }*/
+
         }
     }
 
