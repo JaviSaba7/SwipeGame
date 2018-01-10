@@ -5,7 +5,7 @@ using System;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class SwipeBall : MonoBehaviour
+public class SwipeBall1 : MonoBehaviour
 {
     [Header("Vector3")]
     public Vector3 firstFingerPosition;
@@ -21,6 +21,7 @@ public class SwipeBall : MonoBehaviour
 
     public EnemyBehaviour enemyShoot;
     [Header("Floats")]
+    public float timeForRestart = 0;
     public float timeForDoSwipe;
     public float maxTimeForDoSwipe = 60.0f;
     public float timer = 0;
@@ -56,6 +57,7 @@ public class SwipeBall : MonoBehaviour
     public bool playGame = true;
     public bool makeReal = false;
     public Rigidbody rb;
+    public bool restartBall = false;
     public GameObject particles;
     RaycastHit detection = new RaycastHit();
     public Collider ball;
@@ -65,8 +67,10 @@ public class SwipeBall : MonoBehaviour
     public GameObject enemy3;
     public float timeGame = 60.0f;
     public Text counterText;
-
+    public float appearBall2 = 0;
+    public GameObject ball2;
     public bool enemyShooting = false;
+    public bool appearBall2Bool = false;
     //Start
     void Start()
     {
@@ -89,6 +93,29 @@ public class SwipeBall : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
             makeReal = false;
+        }
+
+        if (restartBall == true)
+        {
+            timeForRestart++;
+            if(timeForRestart >= 30)
+            {
+                rb.position = new Vector3(0, 0.1f, -1.32f);
+                restartBall = false;
+                timeForRestart = 0;
+            }
+        }
+
+        if(appearBall2Bool == true)
+        {
+            appearBall2++;
+            if (appearBall2 >= 10)
+            {
+                ball2.SetActive(true);
+                ball2.transform.position =  new Vector3(0, 0.1f, -1.32f);
+                appearBall2 = 0;
+                appearBall2Bool = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.M))
@@ -165,6 +192,7 @@ public class SwipeBall : MonoBehaviour
         }
         
     }
+
     private void ThrowingBall(Vector3 EndPoint)
     {
         iPosition = rb.position;
@@ -186,9 +214,11 @@ public class SwipeBall : MonoBehaviour
         if(rb.position == fPosition)
         {
             makeReal = true;
+            restartBall = true;
             canSwipe = false;
         }
     }
+
 
     private void DoTween()
     {
@@ -241,49 +271,7 @@ public class SwipeBall : MonoBehaviour
 
     }
 
-    /*public void CalculateWaypoints()
-    {
-        if (saveTime < saveTime2)
-        {
-            posX = positionX;
-            posY = (saveTime / timer) * (yf - yo) + yo;
-            posZ = (saveTime / timer) * (zf - zo) + zo;
-
-            midPosition = new Vector3((posX) * factorX, posY, posZ);
-
-            posX = ((saveTime2 - saveTime) / (timer - saveTime)) * (xf - midPosition.x) + midPosition.x;
-          //  posX = (saveTime2 / timer) * (xf - xo) + xo;
-            posY = positionY * 0.5f;
-            posZ = (saveTime / timer) * (zf - zo) + zo;
-
-            midPosition2 = new Vector3(posX, (factorX) * posY, posZ);
-        }
-
-        else
-        {
-
-            posX = (saveTime2 / timer) * (xf - xo) + xo; 
-            posY = positionY * 0.5f;
-            posZ = (saveTime / timer) * (zf - zo) + zo;
-
-            midPosition = new Vector3(posX, (factorX) * posY, posZ);
-
-            posX = positionX;
-
-             posY = ((saveTime - saveTime2) / (timer - saveTime2)) * (yf - midPosition.y) + midPosition.y;
-          //  posY = (saveTime / timer) * (yf - yo) + yo;
-            posZ = (saveTime / timer) * (zf - zo) + zo;
-
-            midPosition2 = new Vector3((posX) * factorX, posY, posZ);
-
-
-        }
-        waypointsArray = new Vector3[4];
-        waypointsArray[0] = iPosition;
-        waypointsArray[1] = midPosition;
-        waypointsArray[2] = midPosition2;
-        waypointsArray[3] = fPosition;
-    }*/
+   
 
     public void CalculateWaypoints()
     {
@@ -312,6 +300,7 @@ public class SwipeBall : MonoBehaviour
 
     private void Kick(Vector3 lastPosition)
     {
+        appearBall2Bool = true;
         swipeTime = 0;
         lastFingerPosition = lastPosition;
 
