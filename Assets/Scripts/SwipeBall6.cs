@@ -5,7 +5,7 @@ using System;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class SwipeBall2 : MonoBehaviour
+public class SwipeBall6 : MonoBehaviour
 {
     [Header("Vector3")]
     public Vector3 firstFingerPosition;

@@ -18,7 +18,7 @@ public class SwipeBall1 : MonoBehaviour
     public Vector3 ballDirection;
     public Vector3 iPosition;
     public Vector3 fPosition;
-
+    public GameObject ball1;
     public EnemyBehaviour enemyShoot;
     [Header("Floats")]
     public float timeForRestart = 0;
@@ -71,6 +71,11 @@ public class SwipeBall1 : MonoBehaviour
     public GameObject ball2;
     public bool enemyShooting = false;
     public bool appearBall2Bool = false;
+
+    public RestartBall restartSystem;
+
+    public bool ball1Thrown = false;
+    public GameObject winText;
     //Start
     void Start()
     {
@@ -98,54 +103,24 @@ public class SwipeBall1 : MonoBehaviour
         if (restartBall == true)
         {
             timeForRestart++;
-            if(timeForRestart >= 30)
+            if(timeForRestart >= 10)
             {
+                
                 rb.position = new Vector3(0, 0.1f, -1.32f);
                 restartBall = false;
                 timeForRestart = 0;
             }
         }
 
-        if(appearBall2Bool == true)
-        {
-            appearBall2++;
-            if (appearBall2 >= 10)
-            {
-                ball2.SetActive(true);
-                ball2.transform.position =  new Vector3(0, 0.1f, -1.32f);
-                appearBall2 = 0;
-                appearBall2Bool = false;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             enemy.GetComponent<Animator>().enabled = true;
             enemy2.GetComponent<Animator>().enabled = true;
             enemy3.GetComponent<Animator>().enabled = true;
-           activeTime = true;
+            activeTime = true;
 
         }
 
-        if(activeTime) timeGame -= 0.1f;
-        //Debug.Log("TIME GAME = " + timeGame);
-        counterText.text = timeGame.ToString("00.00") + "s";
-
-        if (timeGame == 0) Debug.Log("YOU WIN!");
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            timeGame = 0;
-            if (timeGame == 0) Debug.Log("YOU WIN!");
-            activeTime = false;
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("YOU LOSE!");
-            activeTime = false;
-
-        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             enemyShooting = true;
@@ -213,13 +188,15 @@ public class SwipeBall1 : MonoBehaviour
     {
         if(rb.position == fPosition)
         {
+            restartSystem.respawnBall2++;
+            ball1.SetActive(false);
+
             makeReal = true;
-            restartBall = true;
             canSwipe = false;
         }
     }
 
-
+    
     private void DoTween()
     {
         rb.DOPath(waypointsArray, 2.0f, PathType.CatmullRom, PathMode.Full3D, 100, Color.blue);
@@ -300,6 +277,7 @@ public class SwipeBall1 : MonoBehaviour
 
     private void Kick(Vector3 lastPosition)
     {
+        ball1Thrown = true;
         appearBall2Bool = true;
         swipeTime = 0;
         lastFingerPosition = lastPosition;

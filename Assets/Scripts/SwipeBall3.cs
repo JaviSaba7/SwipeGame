@@ -5,7 +5,7 @@ using System;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class SwipeBall2 : MonoBehaviour
+public class SwipeBall3 : MonoBehaviour
 {
     [Header("Vector3")]
     public Vector3 firstFingerPosition;
@@ -74,7 +74,7 @@ public class SwipeBall2 : MonoBehaviour
 
     public RestartBall restartSystem;
 
-    public bool ball2Thrown = false;
+    public bool ball3Thrown = false;
     public GameObject winText;
     //Start
     void Start()
@@ -277,7 +277,7 @@ public class SwipeBall2 : MonoBehaviour
 
     private void Kick(Vector3 lastPosition)
     {
-        ball2Thrown = true;
+        ball3Thrown = true;
         appearBall2Bool = true;
         swipeTime = 0;
         lastFingerPosition = lastPosition;

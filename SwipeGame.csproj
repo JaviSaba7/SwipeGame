@@ -235,7 +235,6 @@
     <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\FullTiltBoogie\RotateFlareHolder.cs" />
     <Compile Include="Assets\Scripts\CollisionBall.cs" />
-    <Compile Include="Assets\Scripts\Damage.cs" />
     <Compile Include="Assets\Scripts\DestroyEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\KillPlayer.cs" />
@@ -243,6 +242,11 @@
     <Compile Include="Assets\Scripts\RestartBall.cs" />
     <Compile Include="Assets\Scripts\SwipeBall1.cs" />
     <Compile Include="Assets\Scripts\SwipeBall2.cs" />
+    <Compile Include="Assets\Scripts\SwipeBall3.cs" />
+    <Compile Include="Assets\Scripts\SwipeBall4.cs" />
+    <Compile Include="Assets\Scripts\SwipeBall5.cs" />
+    <Compile Include="Assets\Scripts\SwipeBall6.cs" />
+    <Compile Include="Assets\Scripts\WinSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
