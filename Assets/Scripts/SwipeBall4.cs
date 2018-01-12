@@ -188,7 +188,7 @@ public class SwipeBall4 : MonoBehaviour
     {
         if(rb.position == fPosition)
         {
-            restartSystem.respawnBall2++;
+            restartSystem.respawnBall5++;
             ball4.SetActive(false);
 
             makeReal = true;

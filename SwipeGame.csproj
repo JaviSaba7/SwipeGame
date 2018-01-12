@@ -245,7 +245,6 @@
     <Compile Include="Assets\Scripts\SwipeBall3.cs" />
     <Compile Include="Assets\Scripts\SwipeBall4.cs" />
     <Compile Include="Assets\Scripts\SwipeBall5.cs" />
-    <Compile Include="Assets\Scripts\SwipeBall6.cs" />
     <Compile Include="Assets\Scripts\WinSystem.cs" />
   </ItemGroup>
   <ItemGroup>
