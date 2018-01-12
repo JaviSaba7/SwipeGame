@@ -149,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1262027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 706031fe3bfe57c40a80267f8054d8bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 48f490394fb184f4491efe3d8b126bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstFingerPosition: {x: 0, y: 0, z: 0}
@@ -165,8 +165,8 @@ MonoBehaviour:
   ballDirection: {x: 0, y: 0, z: 0}
   iPosition: {x: 0, y: 0, z: 0}
   fPosition: {x: 0, y: 0, z: 0}
-  ball1: {fileID: 968043262}
-  enemyShoot: {fileID: 1896773324}
+  ball1: {fileID: 43406756}
+  enemyShoot: {fileID: 0}
   timeForRestart: 0
   timeForDoSwipe: 0
   maxTimeForDoSwipe: 60
@@ -203,19 +203,19 @@ MonoBehaviour:
   restartBall: 0
   particles: {fileID: 1679365059}
   ball: {fileID: 968043263}
-  enemy: {fileID: 1537023239}
+  enemy: {fileID: 0}
   activeTime: 0
-  enemy2: {fileID: 579230555}
-  enemy3: {fileID: 621900825}
+  enemy2: {fileID: 0}
+  enemy3: {fileID: 0}
   timeGame: 60
   counterText: {fileID: 1939820594}
   appearBall2: 0
-  ball2: {fileID: 0}
   enemyShooting: 0
   appearBall2Bool: 0
   restartSystem: {fileID: 913083935}
-  ball1Thrown: 0
-  winText: {fileID: 1567317438}
+  ball3: {fileID: 43406756}
+  ball3Thrown: 0
+  winText: {fileID: 0}
 --- !u!1 &20137311
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &43406757
 Transform:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   timeGame: 60
   counterText: {fileID: 1939820594}
   appearBall2: 0
-  ball2: {fileID: 0}
+  ball2: {fileID: 753070501}
   enemyShooting: 0
   appearBall2Bool: 0
   restartSystem: {fileID: 913083935}
@@ -821,6 +821,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 371316740}
+  - component: {fileID: 371316741}
   m_Layer: 0
   m_Name: SwypeSystemBall
   m_TagString: Untagged
@@ -841,6 +842,81 @@ Transform:
   m_Father: {fileID: 753070502}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &371316741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371316739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d18aabd50ae1e49879b3c2a50d550f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstFingerPosition: {x: 0, y: 0, z: 0}
+  lastFingerPosition: {x: 0, y: 0, z: 0}
+  waypointsArray:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  midPosition: {x: 0, y: 0, z: 0}
+  midPosition2: {x: 0, y: 0, z: 0}
+  initialPosition: {x: 0, y: 0.1, z: -1.32}
+  footballPos: {x: 0, y: 0, z: 0}
+  ballDirection: {x: 0, y: 0, z: 0}
+  iPosition: {x: 0, y: 0, z: 0}
+  fPosition: {x: 0, y: 0, z: 0}
+  ball1: {fileID: 212262421}
+  enemyShoot: {fileID: 0}
+  timeForRestart: 0
+  timeForDoSwipe: 0
+  maxTimeForDoSwipe: 60
+  timer: 0
+  positionY: 0
+  saveTime2: 0
+  saveTime: 0
+  factorX: 0.002
+  positionX: 0
+  posX: 0
+  posY: 0
+  posZ: 0
+  yo: 0
+  yf: 0
+  zo: 0
+  zf: 0
+  xo: 0
+  xf: 0
+  distanceToObject: 10000
+  speed: 1
+  startTime: 0
+  journeyLength: 0
+  maxSwipeTime: 3000
+  swipeTime: 0
+  distance: 200
+  canSwipe: 0
+  retryActive: 0
+  AddPointsToList: 0
+  ballThrowRight: 0
+  ballThrowLeft: 0
+  playGame: 1
+  makeReal: 0
+  rb: {fileID: 212262423}
+  restartBall: 0
+  particles: {fileID: 1679365059}
+  ball: {fileID: 212262425}
+  enemy: {fileID: 0}
+  activeTime: 0
+  enemy2: {fileID: 0}
+  enemy3: {fileID: 0}
+  timeGame: 60
+  counterText: {fileID: 1939820594}
+  appearBall2: 0
+  enemyShooting: 0
+  appearBall2Bool: 0
+  restartSystem: {fileID: 913083935}
+  ball2: {fileID: 753070501}
+  ball2Thrown: 0
+  winText: {fileID: 1567317438}
 --- !u!1001 &396306108
 Prefab:
   m_ObjectHideFlags: 0
@@ -1084,7 +1160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &454157900
 Transform:
   m_ObjectHideFlags: 0
@@ -1500,7 +1576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &753070502
 Transform:
   m_ObjectHideFlags: 0
@@ -1900,20 +1976,23 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 913083934}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62dd99012c6840d49b57a27bf762e4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeBall1: {fileID: 243493460}
-  swipeBall2: {fileID: 0}
-  ball1: {fileID: 306270347}
-  ball2: {fileID: 0}
-  initialPosition: {x: 0, y: 0.1, z: -1.32}
-  appearBall1: 0
-  appearBall2: 0
+  ball1: {fileID: 485079784}
+  ball2: {fileID: 753070501}
+  ball3: {fileID: 43406756}
+  ball4: {fileID: 454157899}
+  ball5: {fileID: 0}
+  swipeSystem1: {fileID: 243493460}
+  swipeSystem2: {fileID: 371316741}
+  swipeSystem3: {fileID: 1262029}
+  swipeSystem4: {fileID: 1196415687}
   respawnBall2: 0
-  respawnBall1: 0
+  respawnBall3: 0
+  respawnBall4: 0
 --- !u!4 &913083936
 Transform:
   m_ObjectHideFlags: 0
@@ -2328,7 +2407,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1196415685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 706031fe3bfe57c40a80267f8054d8bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 106a3e76407b96f408d3aa0234a178e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstFingerPosition: {x: 0, y: 0, z: 0}
@@ -2344,8 +2423,8 @@ MonoBehaviour:
   ballDirection: {x: 0, y: 0, z: 0}
   iPosition: {x: 0, y: 0, z: 0}
   fPosition: {x: 0, y: 0, z: 0}
-  ball1: {fileID: 1848293002}
-  enemyShoot: {fileID: 1896773324}
+  ball1: {fileID: 454157899}
+  enemyShoot: {fileID: 0}
   timeForRestart: 0
   timeForDoSwipe: 0
   maxTimeForDoSwipe: 60
@@ -2382,19 +2461,20 @@ MonoBehaviour:
   restartBall: 0
   particles: {fileID: 1679365059}
   ball: {fileID: 1848293003}
-  enemy: {fileID: 1537023239}
+  enemy: {fileID: 0}
   activeTime: 0
-  enemy2: {fileID: 579230555}
-  enemy3: {fileID: 621900825}
+  enemy2: {fileID: 0}
+  enemy3: {fileID: 0}
   timeGame: 60
-  counterText: {fileID: 1939820594}
+  counterText: {fileID: 0}
   appearBall2: 0
-  ball2: {fileID: 1848293002}
+  ball2: {fileID: 0}
   enemyShooting: 0
   appearBall2Bool: 0
+  ball4: {fileID: 454157899}
   restartSystem: {fileID: 913083935}
-  ball1Thrown: 0
-  winText: {fileID: 1567317438}
+  ball4Thrown: 0
+  winText: {fileID: 0}
 --- !u!1 &1231515140
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,12 +68,11 @@ public class SwipeBall3 : MonoBehaviour
     public float timeGame = 60.0f;
     public Text counterText;
     public float appearBall2 = 0;
-    public GameObject ball2;
     public bool enemyShooting = false;
     public bool appearBall2Bool = false;
 
     public RestartBall restartSystem;
-
+    public GameObject ball3;
     public bool ball3Thrown = false;
     public GameObject winText;
     //Start
@@ -188,8 +187,8 @@ public class SwipeBall3 : MonoBehaviour
     {
         if(rb.position == fPosition)
         {
-            restartSystem.respawnBall2++;
-            ball1.SetActive(false);
+            restartSystem.respawnBall4++;
+            ball3.SetActive(false);
 
             makeReal = true;
             canSwipe = false;

@@ -74,7 +74,7 @@ public class SwipeBall5 : MonoBehaviour
 
     public RestartBall restartSystem;
 
-    public bool ball2Thrown = false;
+    public bool ball5Thrown = false;
     public GameObject winText;
     //Start
     void Start()

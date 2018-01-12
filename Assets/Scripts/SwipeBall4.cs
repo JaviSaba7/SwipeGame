@@ -71,7 +71,7 @@ public class SwipeBall4 : MonoBehaviour
     public GameObject ball2;
     public bool enemyShooting = false;
     public bool appearBall2Bool = false;
-
+    public GameObject ball4;
     public RestartBall restartSystem;
 
     public bool ball4Thrown = false;
@@ -189,7 +189,7 @@ public class SwipeBall4 : MonoBehaviour
         if(rb.position == fPosition)
         {
             restartSystem.respawnBall2++;
-            ball1.SetActive(false);
+            ball4.SetActive(false);
 
             makeReal = true;
             canSwipe = false;
