@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class WinSystem : MonoBehaviour {
 
     public SwipeBall1 swipeSystem;
+    public float timeToStart = 3.0f;
+    public Text counterToStart;
 	// Use this for initialization
 	void Start ()
     {
@@ -15,6 +17,19 @@ public class WinSystem : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if(swipeSystem.startGame)
+        {
+            counterToStart.text = timeToStart.ToString("0") + "s";
+        }
+
+
+        if(timeToStart < 0)
+        {
+            counterToStart.enabled = false;
+            swipeSystem.activeTime = true;
+        }
+
+        if (swipeSystem.startGame) timeToStart -= 0.1f;
 
         if (swipeSystem.activeTime) swipeSystem.timeGame -= 0.1f;
         //Debug.Log("TIME GAME = " + timeGame);

@@ -71,6 +71,7 @@ public class SwipeBall1 : MonoBehaviour
     public GameObject ball2;
     public bool enemyShooting = false;
     public bool appearBall2Bool = false;
+    public bool startGame = false;
 
     public RestartBall restartSystem;
 
@@ -117,7 +118,7 @@ public class SwipeBall1 : MonoBehaviour
             enemy.GetComponent<Animator>().enabled = true;
             enemy2.GetComponent<Animator>().enabled = true;
             enemy3.GetComponent<Animator>().enabled = true;
-            activeTime = true;
+            startGame = true;
 
         }
 
