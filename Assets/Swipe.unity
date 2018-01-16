@@ -212,6 +212,7 @@ MonoBehaviour:
   appearBall2: 0
   enemyShooting: 0
   appearBall2Bool: 0
+  anim: {fileID: 919980443}
   restartSystem: {fileID: 913083935}
   ball3: {fileID: 43406756}
   ball3Thrown: 0
@@ -230,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &20137312
 Transform:
   m_ObjectHideFlags: 0
@@ -461,7 +462,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 81575962}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.32, y: 0, z: -1.636}
+  m_LocalPosition: {x: -0.186, y: 0, z: -1.636}
   m_LocalScale: {x: 2.778091, y: 2.7780905, z: 2.7780905}
   m_Children:
   - {fileID: 336470756}
@@ -733,6 +734,7 @@ MonoBehaviour:
   appearBall2Bool: 0
   ball4: {fileID: 1700189946}
   restartSystem: {fileID: 913083935}
+  anim: {fileID: 919980443}
   ball5Thrown: 0
   winText: {fileID: 0}
 --- !u!1 &140161814
@@ -1157,6 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706031fe3bfe57c40a80267f8054d8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayTime: 0
   firstFingerPosition: {x: 0, y: 0, z: 0}
   lastFingerPosition: {x: 0, y: 0, z: 0}
   waypointsArray:
@@ -1220,6 +1223,7 @@ MonoBehaviour:
   appearBall2Bool: 0
   startGame: 0
   restartSystem: {fileID: 913083935}
+  anim: {fileID: 919980443}
   ball1Thrown: 0
   winText: {fileID: 1567317438}
 --- !u!4 &243493461
@@ -1791,10 +1795,12 @@ MonoBehaviour:
   appearBall2: 0
   enemyShooting: 0
   appearBall2Bool: 0
+  anim: {fileID: 919980443}
   restartSystem: {fileID: 913083935}
   ball2: {fileID: 753070501}
   ball2Thrown: 0
   winText: {fileID: 1567317438}
+  delayTime: 0
 --- !u!1 &395375908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3932,6 +3938,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &919980442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 919980444}
+  - component: {fileID: 919980443}
+  m_Layer: 0
+  m_Name: AnimatorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &919980443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 919980442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cfb0d8e8ea1e44b8cd0d0d5517793a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monkey: {fileID: 336470754}
+  activeShot: 0
+  animInfo: 0
+  animCounter: 0
+  anim: {fileID: 0}
+--- !u!4 &919980444
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 919980442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.43530273, y: 2.800415, z: -1.3134766}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933888454
 GameObject:
   m_ObjectHideFlags: 0
@@ -4470,7 +4521,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1081072969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5499992, z: -4.39}
+  m_LocalPosition: {x: 0, y: 1.4199982, z: -4.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4478,7 +4529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.55}
+  m_AnchoredPosition: {x: 0, y: 1.42}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1104733891
@@ -4595,7 +4646,7 @@ TrailRenderer:
   m_Time: 0.4
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -4662,7 +4713,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117079851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.7, z: -1.26}
+  m_LocalPosition: {x: 0, y: 2.7, z: -2.629}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5192,6 +5243,7 @@ MonoBehaviour:
   ball: {fileID: 1848293003}
   enemy: {fileID: 0}
   activeTime: 0
+  anim: {fileID: 919980443}
   enemy2: {fileID: 0}
   enemy3: {fileID: 0}
   timeGame: 60
@@ -6296,7 +6348,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1537496745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11, y: -0.028, z: -1.61}
+  m_LocalPosition: {x: 0.01, y: -0.028, z: -1.61}
   m_LocalScale: {x: 7.436146, y: 0.07436146, z: 7.4361463}
   m_Children: []
   m_Father: {fileID: 0}

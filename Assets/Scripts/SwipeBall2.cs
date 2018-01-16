@@ -70,11 +70,13 @@ public class SwipeBall2 : MonoBehaviour
     public float appearBall2 = 0;
     public bool enemyShooting = false;
     public bool appearBall2Bool = false;
-
+    public AnimationManager anim;
     public RestartBall restartSystem;
     public GameObject ball2;
     public bool ball2Thrown = false;
     public GameObject winText;
+
+    public float delayTime;
     //Start
     void Start()
     {
@@ -276,17 +278,22 @@ public class SwipeBall2 : MonoBehaviour
 
     private void Kick(Vector3 lastPosition)
     {
-        ball2Thrown = true;
-        appearBall2Bool = true;
-        swipeTime = 0;
-        lastFingerPosition = lastPosition;
+        anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
+        
+            ball2Thrown = true;
+            appearBall2Bool = true;
+            swipeTime = 0;
+            lastFingerPosition = lastPosition;
 
-       // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
+            // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
 
-        AddPointsToList = false;
+            AddPointsToList = false;
 
-        var worldEndPoint = RayCamera();
-        ThrowingBall(worldEndPoint);
+            var worldEndPoint = RayCamera();
+            ThrowingBall(worldEndPoint);
+            delayTime = 0;
+        
+      
     }
 
     void CheckXPoint()

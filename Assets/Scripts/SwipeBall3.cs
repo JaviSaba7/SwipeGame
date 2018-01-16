@@ -70,6 +70,7 @@ public class SwipeBall3 : MonoBehaviour
     public float appearBall2 = 0;
     public bool enemyShooting = false;
     public bool appearBall2Bool = false;
+    public AnimationManager anim;
 
     public RestartBall restartSystem;
     public GameObject ball3;
@@ -276,6 +277,9 @@ public class SwipeBall3 : MonoBehaviour
 
     private void Kick(Vector3 lastPosition)
     {
+
+        anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
+
         ball3Thrown = true;
         appearBall2Bool = true;
         swipeTime = 0;

@@ -63,6 +63,7 @@ public class SwipeBall4 : MonoBehaviour
     public Collider ball;
     public GameObject enemy;
     public bool activeTime;
+    public AnimationManager anim;
     public GameObject enemy2;
     public GameObject enemy3;
     public float timeGame = 60.0f;
@@ -277,6 +278,8 @@ public class SwipeBall4 : MonoBehaviour
 
     private void Kick(Vector3 lastPosition)
     {
+        anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
+
         ball4Thrown = true;
         appearBall2Bool = true;
         swipeTime = 0;

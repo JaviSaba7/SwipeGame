@@ -73,7 +73,7 @@ public class SwipeBall5 : MonoBehaviour
     public bool appearBall2Bool = false;
     public GameObject ball4;
     public RestartBall restartSystem;
-
+    public AnimationManager anim;
     public bool ball5Thrown = false;
     public GameObject winText;
     //Start
@@ -277,6 +277,8 @@ public class SwipeBall5 : MonoBehaviour
 
     private void Kick(Vector3 lastPosition)
     {
+        anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
+
         ball5Thrown = true;
         appearBall2Bool = true;
         swipeTime = 0;

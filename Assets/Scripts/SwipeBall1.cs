@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SwipeBall1 : MonoBehaviour
 {
+    public float delayTime;
     [Header("Vector3")]
     public Vector3 firstFingerPosition;
     public Vector3 lastFingerPosition; 
@@ -74,7 +75,7 @@ public class SwipeBall1 : MonoBehaviour
     public bool startGame = false;
 
     public RestartBall restartSystem;
-
+    public AnimationManager anim;
     public bool ball1Thrown = false;
     public GameObject winText;
     //Start
@@ -89,6 +90,7 @@ public class SwipeBall1 : MonoBehaviour
     //Update
     void Update()
     {
+
         if (Input.GetButton("Fire1")) Retry();
         if (playGame) playerLogic();
         if (AddPointsToList) CheckXPoint();
@@ -275,20 +277,26 @@ public class SwipeBall1 : MonoBehaviour
         waypointsArray[1] = midPosition;
         waypointsArray[2] = fPosition;
     }
-
     private void Kick(Vector3 lastPosition)
     {
-        ball1Thrown = true;
-        appearBall2Bool = true;
-        swipeTime = 0;
-        lastFingerPosition = lastPosition;
+        
+            anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
 
-       // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
+            ball1Thrown = true;
+            appearBall2Bool = true;
+            swipeTime = 0;
+            lastFingerPosition = lastPosition;
 
-        AddPointsToList = false;
+            // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
 
-        var worldEndPoint = RayCamera();
-        ThrowingBall(worldEndPoint);
+            AddPointsToList = false;
+
+            var worldEndPoint = RayCamera();
+            ThrowingBall(worldEndPoint);
+        
+
+          
+
     }
 
     void CheckXPoint()
