@@ -13,7 +13,6 @@ public class KillPlayer : MonoBehaviour
     public SwipeBall1 swipeSystem;
     public GameObject player;
 
-
     void Start()
     {
 
@@ -29,9 +28,8 @@ public class KillPlayer : MonoBehaviour
 
         }
     }
-
  
-public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Kill")
         {

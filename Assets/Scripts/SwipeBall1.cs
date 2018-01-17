@@ -259,13 +259,6 @@ public class SwipeBall1 : MonoBehaviour
         saveTime = ((saveTime2 - saveTime) /2) + saveTime;
         posZ = (saveTime / timer) * (zf - zo) + zo;
 
-        //midPosition = new Vector3((posX) * factorX, posY, posZ);
-
-        //posX = ((saveTime2 - saveTime) / (timer - saveTime)) * (xf - midPosition.x) + midPosition.x;
-
-        //posX = (saveTime2 / timer) * (xf - xo) + xo;
-
-       //posY = positionY * 0.5f;
         posZ = (saveTime / timer) * (zf - zo) + zo;
         
         midPosition = new Vector3(posX* factorX, (factorX) * posY, posZ);
@@ -276,29 +269,19 @@ public class SwipeBall1 : MonoBehaviour
         waypointsArray[2] = fPosition;
     }
     private void Kick(Vector3 lastPosition)
-    {
-        
+    {    
         anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
-       
-       
+        
         ball1Thrown = true;
         appearBall2Bool = true;
         swipeTime = 0;
         lastFingerPosition = lastPosition;
-
-        // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
 
         AddPointsToList = false;
 
         var worldEndPoint = RayCamera();
         ThrowingBall(worldEndPoint);
         
-        
-       
-        
-
-          
-
     }
 
     void CheckXPoint()
@@ -313,11 +296,9 @@ public class SwipeBall1 : MonoBehaviour
        
         if (Mathf.Abs(Input.mousePosition.y) > Mathf.Abs(PosMaxY.y))
         {
-           
             PosMaxY.y = Input.mousePosition.y;
             PosMaxY.x = difToCenter;
             saveTime2 = timer;
-           
         }
     }
 

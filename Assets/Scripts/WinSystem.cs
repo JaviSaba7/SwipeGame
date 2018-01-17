@@ -22,7 +22,6 @@ public class WinSystem : MonoBehaviour {
             counterToStart.text = timeToStart.ToString("0") + "s";
         }
 
-
         if(timeToStart < 0)
         {
             counterToStart.enabled = false;
@@ -32,7 +31,6 @@ public class WinSystem : MonoBehaviour {
         if (swipeSystem.startGame) timeToStart -= Time.deltaTime;
 
         if (swipeSystem.activeTime) swipeSystem.timeGame -= Time.deltaTime;
-        //Debug.Log("TIME GAME = " + timeGame);
         swipeSystem.counterText.text = swipeSystem.timeGame.ToString("00.00") + "s";
 
         if (swipeSystem.timeGame <= 0)
@@ -48,12 +46,8 @@ public class WinSystem : MonoBehaviour {
             if (swipeSystem.timeGame == 0)
             {
                 Debug.Log("YOU WIN!");
-
             }
             swipeSystem.activeTime = false;
-
-
         }
-
     }
 }

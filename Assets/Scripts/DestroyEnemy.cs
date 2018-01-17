@@ -12,7 +12,6 @@ public class DestroyEnemy : MonoBehaviour {
 
 	}
 
-
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.name == "Ball")

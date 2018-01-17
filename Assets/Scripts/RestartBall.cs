@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RestartBall : MonoBehaviour {
-
     
     public GameObject ball1;
     public GameObject ball2;
@@ -18,7 +17,6 @@ public class RestartBall : MonoBehaviour {
     public SwipeBall3 swipeSystem3;
     public SwipeBall4 swipeSystem4;
     public SwipeBall5 swipeSystem5;
-    //public SwipeBall6 swipeSystem6;
 
     public float respawnBall2;
     public float respawnBall3;
@@ -26,7 +24,6 @@ public class RestartBall : MonoBehaviour {
     public float respawnBall4;
     public float respawnBall5;
     public float respawnBall6;
-
 
     // Use this for initialization
     void Start ()
@@ -49,7 +46,7 @@ public class RestartBall : MonoBehaviour {
        }
 
        if (swipeSystem2.ball2Thrown == true)
-        {
+       {
             respawnBall3++;
             if (respawnBall3 >= 10)
             {
@@ -57,10 +54,10 @@ public class RestartBall : MonoBehaviour {
                 swipeSystem2.ball2Thrown = false;
                 respawnBall3 = 0;
             }
-        }
+       }
 
        if (swipeSystem3.ball3Thrown == true)
-        {
+       {
             respawnBall4++;
             if (respawnBall4 >= 10)
             {
@@ -68,7 +65,7 @@ public class RestartBall : MonoBehaviour {
                 swipeSystem3.ball3Thrown = false;
                 respawnBall4 = 0;
             }
-        }
+       }
 
 
         if (swipeSystem4.ball4Thrown == true)
@@ -81,6 +78,5 @@ public class RestartBall : MonoBehaviour {
                 respawnBall5 = 0;
             }
         }
-
     }
 }
