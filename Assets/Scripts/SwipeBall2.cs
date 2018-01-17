@@ -291,9 +291,7 @@ public class SwipeBall2 : MonoBehaviour
 
             var worldEndPoint = RayCamera();
             ThrowingBall(worldEndPoint);
-            delayTime = 0;
-        
-      
+            delayTime = 0;      
     }
 
     void CheckXPoint()

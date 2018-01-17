@@ -73,7 +73,6 @@ public class SwipeBall1 : MonoBehaviour
     public bool enemyShooting = false;
     public bool appearBall2Bool = false;
     public bool startGame = false;
-
     public RestartBall restartSystem;
     public AnimationManager anim;
     public bool ball1Thrown = false;
@@ -90,7 +89,6 @@ public class SwipeBall1 : MonoBehaviour
     //Update
     void Update()
     {
-
         if (Input.GetButton("Fire1")) Retry();
         if (playGame) playerLogic();
         if (AddPointsToList) CheckXPoint();
@@ -280,19 +278,23 @@ public class SwipeBall1 : MonoBehaviour
     private void Kick(Vector3 lastPosition)
     {
         
-            anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
+        anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
+       
+       
+        ball1Thrown = true;
+        appearBall2Bool = true;
+        swipeTime = 0;
+        lastFingerPosition = lastPosition;
 
-            ball1Thrown = true;
-            appearBall2Bool = true;
-            swipeTime = 0;
-            lastFingerPosition = lastPosition;
+        // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
 
-            // ballThrowRight = (positionX > Screen.width / 2) ? true : false;
+        AddPointsToList = false;
 
-            AddPointsToList = false;
-
-            var worldEndPoint = RayCamera();
-            ThrowingBall(worldEndPoint);
+        var worldEndPoint = RayCamera();
+        ThrowingBall(worldEndPoint);
+        
+        
+       
         
 
           

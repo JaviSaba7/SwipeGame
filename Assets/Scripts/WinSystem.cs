@@ -29,9 +29,9 @@ public class WinSystem : MonoBehaviour {
             swipeSystem.activeTime = true;
         }
 
-        if (swipeSystem.startGame) timeToStart -= 0.1f;
+        if (swipeSystem.startGame) timeToStart -= Time.deltaTime;
 
-        if (swipeSystem.activeTime) swipeSystem.timeGame -= 0.1f;
+        if (swipeSystem.activeTime) swipeSystem.timeGame -= Time.deltaTime;
         //Debug.Log("TIME GAME = " + timeGame);
         swipeSystem.counterText.text = swipeSystem.timeGame.ToString("00.00") + "s";
 

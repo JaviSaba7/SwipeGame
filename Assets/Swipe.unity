@@ -434,6 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81575964}
   - component: {fileID: 81575963}
+  - component: {fileID: 81575965}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Player
@@ -462,13 +463,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 81575962}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.186, y: 0, z: -1.636}
+  m_LocalPosition: {x: -0.186, y: 0, z: -1.563}
   m_LocalScale: {x: 2.778091, y: 2.7780905, z: 2.7780905}
   m_Children:
   - {fileID: 336470756}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &81575965
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 81575962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.09
+  m_Height: 0.63
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.11, z: 0}
 --- !u!1 &83770054
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +722,7 @@ MonoBehaviour:
   speed: 1
   startTime: 0
   journeyLength: 0
-  maxSwipeTime: 0
+  maxSwipeTime: 3000
   swipeTime: 0
   distance: 200
   canSwipe: 0
@@ -3047,7 +3061,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688812193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.369, y: 1.628, z: -1.656}
+  m_LocalPosition: {x: -0.071, y: 1.628, z: -1.656}
   m_LocalScale: {x: 0.19141388, y: 0.19141386, z: 0.19141386}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3966,10 +3980,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monkey: {fileID: 336470754}
-  activeShot: 0
-  animInfo: 0
-  animCounter: 0
-  anim: {fileID: 0}
 --- !u!4 &919980444
 Transform:
   m_ObjectHideFlags: 0
@@ -4713,7 +4723,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117079851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.7, z: -2.629}
+  m_LocalPosition: {x: 0, y: 2.7, z: -1.873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7183,7 +7193,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1896773321}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
