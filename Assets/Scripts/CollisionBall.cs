@@ -7,6 +7,7 @@ public class CollisionBall : MonoBehaviour {
     public GameObject particles;
 	void Start ()
     {
+
 	}
 
     // Update is called once per frame
@@ -16,5 +17,4 @@ public class CollisionBall : MonoBehaviour {
         Debug.Log("COLLISION!!!!!");
         particles.SetActive(true);
     }
-
 }

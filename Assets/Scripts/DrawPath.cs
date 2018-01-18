@@ -21,7 +21,6 @@ public class DrawPath : MonoBehaviour
             float rayDistance;
             if (objPlane.Raycast(mRay, out rayDistance))
                 this.transform.position = mRay.GetPoint(rayDistance);
-
         }
 	}
 }

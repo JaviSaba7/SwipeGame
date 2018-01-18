@@ -5,10 +5,8 @@ using System;
 using DG.Tweening;
 using UnityEngine.UI;
 
-
 public class KillPlayer : MonoBehaviour
-{//crear el gameobject cuando me deje
-
+{
     public GameObject youLose;
     public SwipeBall1 swipeSystem;
     public GameObject player;
@@ -25,7 +23,6 @@ public class KillPlayer : MonoBehaviour
         {
             Debug.Log("YOU LOSE!");
             swipeSystem.activeTime = false;
-
         }
     }
  

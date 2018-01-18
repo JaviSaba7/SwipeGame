@@ -112,15 +112,15 @@ public class SwipeBall1 : MonoBehaviour
                 timeForRestart = 0;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
+        //PRUEBA PARA MOVIL
+        // if (Input.GetKeyDown(KeyCode.S))
+        //{
             enemy.GetComponent<Animator>().enabled = true;
             enemy2.GetComponent<Animator>().enabled = true;
             enemy3.GetComponent<Animator>().enabled = true;
             startGame = true;
 
-        }
+       // }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
