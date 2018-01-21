@@ -5,18 +5,11 @@ using System;
 using UnityEngine.UI;
 public class WinSystem : MonoBehaviour {
 
+    public SwipeBall1 swipeSystem;
     public float timeToStart = 3.0f;
-    public float timeofGame = 30.0f;
-    public float score;
-    public Text scoreText;
-    public Text counterToStartText;
-    public Text gameTimeText;
-    public bool startGame;
-    public bool startToPlay;
-
-    public float timeOfGame = 30.0f;
-    // Use this for initialization
-    void Start ()
+    public Text counterToStart;
+	// Use this for initialization
+	void Start ()
     {
 		
 	}
@@ -24,41 +17,37 @@ public class WinSystem : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if(swipeSystem.startGame)
         {
-
-            startGame = true;
-
-        }
-
-        if (startGame)
-        {
-            counterToStartText.text = timeToStart.ToString("0") + "s";
-            timeToStart -= Time.deltaTime;
+            counterToStart.text = timeToStart.ToString("0") + "s";
         }
 
         if(timeToStart < 0)
         {
-            counterToStartText.enabled = false;
-            gameTimeText.enabled = true;
-            startToPlay = true;
+            counterToStart.enabled = false;
+            swipeSystem.activeTime = true;
         }
 
-        if(startToPlay)
+        if (swipeSystem.startGame) timeToStart -= Time.deltaTime;
+
+        if (swipeSystem.activeTime) swipeSystem.timeGame -= Time.deltaTime;
+        swipeSystem.counterText.text = swipeSystem.timeGame.ToString("00.00") + "s";
+
+        if (swipeSystem.timeGame <= 0)
         {
-            gameTimeText.text = timeofGame.ToString("0");
-            timeofGame -= Time.deltaTime;
+            swipeSystem.winText.SetActive(true);
+            swipeSystem.timeGame = 0;
+            swipeSystem.activeTime = false;
         }
-
-        scoreText.text = score.ToString("");
-        
-
-        score = 3;
-
-
-
-
-        if (timeOfGame == 0) Debug.Log("YOU WIN!");
-      
+        if (swipeSystem.timeGame == 0) Debug.Log("YOU WIN!");
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            swipeSystem.timeGame = 0;
+            if (swipeSystem.timeGame == 0)
+            {
+                Debug.Log("YOU WIN!");
+            }
+            swipeSystem.activeTime = false;
+        }
     }
 }
