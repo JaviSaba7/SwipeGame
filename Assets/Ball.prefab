@@ -135,6 +135,7 @@ MonoBehaviour:
   saveTime2: 0
   saveTime: 0
   factorX: 0.002
+  factorY: 0.004
   positionX: 0
   posX: 0
   posY: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
   startGame: 0
   restartSystem: {fileID: 0}
   anim: {fileID: 0}
-  ball1Thrown: 0
+  ballThrown: 0
   winText: {fileID: 0}
 --- !u!135 &135452063353475026
 SphereCollider:

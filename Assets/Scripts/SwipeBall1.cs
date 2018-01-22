@@ -30,6 +30,8 @@ public class SwipeBall1 : MonoBehaviour
     public float saveTime2;
     public float saveTime;
     public float factorX = 0.002f;
+    public float factorY = 0.01f;
+
     public float positionX = 0.0f;
     Vector2 PosMaxX;
     Vector2 PosMaxY;
@@ -75,7 +77,7 @@ public class SwipeBall1 : MonoBehaviour
     public bool startGame = false;
     public RestartBall restartSystem;
     public AnimationManager anim;
-    public bool ball1Thrown = false;
+    public bool ballThrown = false;
     public GameObject winText;
     //Start
     void Start()
@@ -120,12 +122,7 @@ public class SwipeBall1 : MonoBehaviour
 
        // }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            enemyShooting = true;
-
-        }
-        if(enemyShooting) enemyShoot.Shooting(); 
+       
 
     }
             //Functions
@@ -153,7 +150,7 @@ public class SwipeBall1 : MonoBehaviour
         RaycastHit hit;
         if (ball.Raycast(ray, out hit, 100.0F))
         {
-            transform.position = ray.GetPoint(100.0F);
+             // transform.position = ray.GetPoint(100.0F);
           //  Debug.Log("Ball Touching");
             timeForDoSwipe++;
             canSwipe = true;
@@ -258,7 +255,7 @@ public class SwipeBall1 : MonoBehaviour
 
         posZ = (saveTime / timer) * (zf - zo) + zo;
         
-        midPosition = new Vector3(posX* factorX, (factorX) * posY, posZ);
+        midPosition = new Vector3(posX* factorX, (factorY) * posY, posZ);
         
         waypointsArray = new Vector3[3];
         waypointsArray[0] = iPosition;
@@ -269,7 +266,7 @@ public class SwipeBall1 : MonoBehaviour
     {    
         //anim.monkey.GetComponent<Animator>().SetTrigger("isChuting");
         
-        ball1Thrown = true;
+        ballThrown = true;
         appearBall2Bool = true;
         swipeTime = 0;
         lastFingerPosition = lastPosition;
