@@ -9,13 +9,15 @@ public class RestartBall : MonoBehaviour {
     public List<GameObject> balls;
     [SerializeField] private int counter;
     [SerializeField] private Vector3 initialPosition;
-    public float timeOfLive = 15.0f;
+
+
     public float nextBall;
     public float timeOfRespawn = 3.0f;
     public float disappear;
     public float timeOfDisappear = 50.0f;
     public bool activeDisappear = false;
     public GameObject tmp;
+
     // Use this for initialization
     void Start()
     {
@@ -50,17 +52,38 @@ public class RestartBall : MonoBehaviour {
                 }
             }
         }
+      //  DestroyBall();
     }
 
     private void CreateBall()
     {
         GameObject tmp = Instantiate(prefab, initialPosition, Quaternion.identity).gameObject;
         //Destroy(tmp, 5);
-        //Destroy(tmp.gameObject, 5);
+        
 
         balls.Add(tmp);
         counter++;
     }
+
+    private void DestroyBall()
+    {
+        if(balls.Count > 0)
+        {
+            for (int i = 0; i < balls.Count; i++)
+            {
+                SwipeBall1 s = balls[i].GetComponent<SwipeBall1>();
+
+                if (s.timeOfLife <= 0)
+                {
+                    GameObject tmp = balls[i];
+                    balls.RemoveAt(i);
+                    Destroy(tmp);
+                }
+            }
+        }
+       
+    }
+
 
 
 }

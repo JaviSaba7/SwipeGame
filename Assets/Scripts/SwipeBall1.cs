@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SwipeBall1 : MonoBehaviour
 {
+    public float timeOfLife = 30.0f;
     public float delayTime;
     [Header("Vector3")]
     public Vector3 firstFingerPosition;
@@ -91,6 +92,8 @@ public class SwipeBall1 : MonoBehaviour
     //Update
     void Update()
     {
+        if(ballThrown) timeOfLife -= Time.deltaTime;
+
         if (Input.GetButton("Fire1")) Retry();
         if (playGame) playerLogic();
         if (AddPointsToList) CheckXPoint();
