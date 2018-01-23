@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706031fe3bfe57c40a80267f8054d8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeOfLife: 30
   delayTime: 0
   firstFingerPosition: {x: 0, y: 0, z: 0}
   lastFingerPosition: {x: 0, y: 0, z: 0}
@@ -134,9 +135,10 @@ MonoBehaviour:
   positionY: 0
   saveTime2: 0
   saveTime: 0
-  factorX: 0.002
-  factorY: 0.004
+  factorX: 50
+  factorY: 1
   positionX: 0
+  PosMaxX: {x: 0, y: 0}
   posX: 0
   posY: 0
   posZ: 0
@@ -150,7 +152,7 @@ MonoBehaviour:
   speed: 1
   startTime: 0
   journeyLength: 0
-  maxSwipeTime: 3000
+  maxSwipeTime: 100
   swipeTime: 0
   distance: 200
   canSwipe: 0

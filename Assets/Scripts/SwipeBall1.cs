@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class SwipeBall1 : MonoBehaviour
 {
     public float timeOfLife = 30.0f;
+
     public float delayTime;
     [Header("Vector3")]
     public Vector3 firstFingerPosition;
@@ -34,7 +35,7 @@ public class SwipeBall1 : MonoBehaviour
     public float factorY = 0.01f;
 
     public float positionX = 0.0f;
-    Vector2 PosMaxX;
+    public Vector2 PosMaxX;
     Vector2 PosMaxY;
     public float posX;
     public float posY; 
@@ -197,7 +198,15 @@ public class SwipeBall1 : MonoBehaviour
     
     private void DoTween()
     {
-        rb.DOPath(waypointsArray, 2.0f, PathType.CatmullRom, PathMode.Full3D, 100, Color.blue);
+        rb.DOPath(waypointsArray, 2.0f, PathType.CatmullRom, PathMode.Full3D, 100, Color.blue).OnComplete(AutoDestroy);
+
+       
+    }
+
+    private void AutoDestroy()
+    {
+        
+        Destroy(gameObject);
     }
 
     private void DoMouseTouch()
@@ -250,15 +259,15 @@ public class SwipeBall1 : MonoBehaviour
 
     public void CalculateWaypoints()
     {
-        posX = (PosMaxX.x + PosMaxY.x)/ 2 * 1.3f;
-        posY = ((PosMaxX.y + PosMaxY.y)/2) * 0.5f;
+        posX = (PosMaxX.x + PosMaxY.x)/ 2;
+        posY = ((PosMaxX.y + PosMaxY.y)/2);
 
         saveTime = ((saveTime2 - saveTime) /2) + saveTime;
         posZ = (saveTime / timer) * (zf - zo) + zo;
 
         posZ = (saveTime / timer) * (zf - zo) + zo;
         
-        midPosition = new Vector3(posX* factorX, (factorY) * posY, posZ);
+        midPosition = new Vector3(posX* (factorX/posZ), (factorY) * posY, posZ);
         
         waypointsArray = new Vector3[3];
         waypointsArray[0] = iPosition;
@@ -283,17 +292,17 @@ public class SwipeBall1 : MonoBehaviour
 
     void CheckXPoint()
     {
-        var difToCenter = Input.mousePosition.x - Screen.width / 2;
+        var difToCenter = Input.mousePosition.x / Screen.width -0.5f;
         if (Mathf.Abs(difToCenter) > Mathf.Abs(PosMaxX.x))
         {
             PosMaxX.x = difToCenter;
-            PosMaxX.y = Input.mousePosition.y;
+            PosMaxX.y = Input.mousePosition.y/ Screen.height;
             saveTime = timer;
         }
        
-        if (Mathf.Abs(Input.mousePosition.y) > Mathf.Abs(PosMaxY.y))
+        if (Mathf.Abs(Input.mousePosition.y / Screen.height) > Mathf.Abs(PosMaxY.y))
         {
-            PosMaxY.y = Input.mousePosition.y;
+            PosMaxY.y = Input.mousePosition.y / Screen.height;
             PosMaxY.x = difToCenter;
             saveTime2 = timer;
         }
