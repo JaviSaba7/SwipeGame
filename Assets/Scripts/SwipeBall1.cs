@@ -119,12 +119,7 @@ public class SwipeBall1 : MonoBehaviour
             }
         }
         //PRUEBA PARA MOVIL
-        // if (Input.GetKeyDown(KeyCode.S))
-        //{
-           
-            startGame = true;
 
-       // }
 
        
 
@@ -293,17 +288,17 @@ public class SwipeBall1 : MonoBehaviour
     void CheckXPoint()
     {
         var difToCenter = Input.mousePosition.x / Screen.width -0.5f;
-        if (Mathf.Abs(difToCenter) > Mathf.Abs(PosMaxX.x))
+         /*if (Mathf.Abs(difToCenter) > Mathf.Abs(PosMaxX.x))
         {
             PosMaxX.x = difToCenter;
             PosMaxX.y = Input.mousePosition.y/ Screen.height;
             saveTime = timer;
-        }
-       
+        }*/
+      
         if (Mathf.Abs(Input.mousePosition.y / Screen.height) > Mathf.Abs(PosMaxY.y))
         {
             PosMaxY.y = Input.mousePosition.y / Screen.height;
-            PosMaxY.x = difToCenter;
+            //PosMaxY.x = difToCenter;
             saveTime2 = timer;
         }
     }

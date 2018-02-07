@@ -18,15 +18,13 @@ public class RestartBall : MonoBehaviour {
     public float timeOfDisappear = 50.0f;
     public bool activeDisappear = false;
     public GameObject tmp;
-
+    public Quaternion quat = new Quaternion(-20.0f, 80.0f, 90.0f, 0);
     // Use this for initialization
     void Start()
     {
         initialPosition = new Vector3(0, 0.12f, -1.3f);
 
-
-        tmp = Instantiate(prefab, initialPosition, Quaternion.identity).gameObject;
-
+        tmp = Instantiate(prefab, initialPosition, quat).gameObject;
 
         balls.Add(tmp);
         counter = 0;
@@ -34,8 +32,7 @@ public class RestartBall : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {
-    
+    {   
         if (counter <= ballNumber)
         {
             int size = balls.Count - 1;
@@ -58,7 +55,7 @@ public class RestartBall : MonoBehaviour {
 
     private void CreateBall()
     {
-        GameObject tmp = Instantiate(prefab, initialPosition, Quaternion.identity).gameObject;
+        GameObject tmp = Instantiate(prefab, initialPosition, quat).gameObject;
         //Destroy(tmp, 5);
 
         //DestroyBall();

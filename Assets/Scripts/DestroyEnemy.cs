@@ -12,14 +12,18 @@ public class DestroyEnemy : MonoBehaviour {
 
 	}
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.name == "Ball")
+        if(gameObject.tag == "Kill")
         {
             Debug.Log("COLLISION!!!!!");
             particles.SetActive(true);
-            enemy.SetActive(false);
-        }      
+            enemy.GetComponent<Animator>().enabled = false;
+            enemy.GetComponent<Renderer>().enabled = false;
+            
+        }
+            
+           
        
     }
 
